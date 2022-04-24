@@ -1,3 +1,6 @@
+from operator import index
+
+
 scores = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54, 48, 69, 34, 55, 51, 52, 44,
           51, 69, 64, 66, 55, 52, 61, 46, 31, 57, 52, 44, 18, 41, 53, 55, 61, 51, 44]
 
@@ -24,9 +27,12 @@ print('Solutions with the highest score:', best_solutions)
 
 cost = 100.0
 most_effective = 0
-for i in range(length):
-    if scores[i] == high_score and costs[i] < cost:
-        most_effective = i
-        cost = costs[i]
+
+for i in range(len(best_solutions)):
+    index = best_solutions[i]
+    if cost > costs[index]:
+        most_effective = index
+        cost = costs[index]
+
 print('Solutions', most_effective,
       'is the most effective with a cost of', costs[most_effective])
